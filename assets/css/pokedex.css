@@ -1,0 +1,424 @@
+/* ===== Cabeçalho ===== */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.app-header h1 {
+    margin: 0;
+}
+
+/* ===== Botões de ícone genéricos ===== */
+.icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--text);
+    padding: .25rem;
+    border-radius: .5rem;
+}
+
+.icon-btn:hover {
+    background-color: var(--shadow);
+}
+
+/* ===== Barra de ferramentas (busca/filtro) ===== */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.search,
+.type-filter {
+    padding: .5rem .75rem;
+    border: 1px solid var(--shadow);
+    border-radius: .75rem;
+    background-color: var(--surface);
+    color: var(--text);
+    font-size: .875rem;
+}
+
+.search {
+    flex: 1 1 200px;
+}
+
+.chip {
+    padding: .5rem .75rem;
+    border: 1px solid var(--shadow);
+    border-radius: .75rem;
+    background-color: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-size: .875rem;
+}
+
+.chip.active {
+    background-color: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+.team-counter {
+    margin-left: auto;
+    padding: .5rem .75rem;
+    border-radius: .75rem;
+    background-color: var(--shadow);
+    color: var(--text);
+    font-size: .8125rem;
+    font-weight: 500;
+}
+
+.team-counter.full {
+    background-color: #bf3029;
+    color: #fff;
+}
+
+/* ===== Área de status (loading/erro/toast) ===== */
+.status-area {
+    min-height: 1.25rem;
+}
+
+.status-area .empty,
+.status-area .toast {
+    text-align: center;
+    color: var(--text-muted);
+    padding: .5rem;
+}
+
+.status-area .toast {
+    background-color: var(--accent);
+    color: #fff;
+    border-radius: .75rem;
+    font-size: .875rem;
+}
+
+.status-area .error {
+    text-align: center;
+    color: #bf3029;
+    padding: 1rem;
+}
+
+.status-area .error button {
+    margin-top: .5rem;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: .75rem;
+    background-color: var(--accent);
+    color: #fff;
+    cursor: pointer;
+}
+
+/* ===== Grid de Pokémon ===== */
+.pokemons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ===== Cores por tipo ===== */
+.normal { background-color: #a6a877; }
+.grass { background-color: #77c850; }
+.fire { background-color: #ee7f30; }
+.water { background-color: #678fee; }
+.electric { background-color: #f7cf2e; }
+.ice { background-color: #98d5d7; }
+.ground { background-color: #dfbf69; }
+.flying { background-color: #a98ff0; }
+.poison { background-color: #a040a0; }
+.fighting { background-color: #bf3029; }
+.psychic { background-color: #f65687; }
+.dark { background-color: #725847; }
+.rock { background-color: #b8a137; }
+.bug { background-color: #a8b720; }
+.ghost { background-color: #6e5896; }
+.steel { background-color: #b9b7cf; }
+.dragon { background-color: #6f38f6; }
+.fairy { background-color: #f9aec7; }
+
+/* ===== Card ===== */
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pokemon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px var(--shadow);
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pokemon .number {
+    color: #000;
+    opacity: .4;
+    font-size: .625rem;
+}
+
+.fav-btn {
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.fav-btn.active {
+    color: #ffd700;
+}
+
+.pokemon .name {
+    text-transform: capitalize;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: .25rem;
+}
+
+.pokemon .detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pokemon .detail .types {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.type {
+    color: #fff;
+    padding: .25rem .5rem;
+    margin: .25rem 0;
+    font-size: .625rem;
+    border-radius: 1rem;
+    filter: brightness(1.1);
+    text-align: center;
+    display: block;
+}
+
+.pokemon .detail img {
+    max-width: 100%;
+    height: 70px;
+}
+
+.team-btn {
+    margin-top: .5rem;
+    padding: .375rem;
+    border: none;
+    border-radius: .75rem;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: .75rem;
+    cursor: pointer;
+}
+
+.team-btn.active {
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+/* ===== Skeleton de carregamento ===== */
+.skeleton {
+    height: 160px;
+    background: linear-gradient(90deg, var(--shadow) 25%, transparent 50%, var(--shadow) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+    cursor: default;
+}
+
+.skeleton:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ===== Paginação ===== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.pagination button {
+    padding: .5rem 1.5rem;
+    font-size: .875rem;
+    color: #fff;
+    background-color: var(--accent);
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+/* ===== Modal ===== */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    z-index: 100;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-box {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: var(--surface);
+    border-radius: 1rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    color: #fff;
+    z-index: 1;
+}
+
+.modal-header {
+    position: relative;
+    padding: 1.5rem 1rem 1rem;
+    border-radius: 1rem 1rem 0 0;
+    text-align: center;
+    color: #fff;
+}
+
+.modal-header .number {
+    opacity: .7;
+    font-size: .75rem;
+}
+
+.modal-header h2 {
+    margin: .25rem 0;
+    text-transform: capitalize;
+}
+
+.modal-header img {
+    height: 140px;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.3));
+}
+
+.modal-content {
+    padding: 1rem;
+}
+
+.modal-loading {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* Foco visível para navegação por teclado (acessibilidade). */
+.icon-btn:focus-visible,
+.team-btn:focus-visible,
+.chip:focus-visible,
+.search:focus-visible,
+.type-filter:focus-visible,
+.pagination button:focus-visible,
+.pokemon:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.modal-content .types {
+    display: flex;
+    gap: .5rem;
+    padding: 0;
+    margin: 0 0 1rem;
+    list-style: none;
+    justify-content: center;
+}
+
+.measures {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.abilities {
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    color: var(--text);
+}
+
+.stats strong {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.stat-row {
+    display: grid;
+    grid-template-columns: 70px 36px 1fr;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .375rem;
+}
+
+.stat-name {
+    font-size: .75rem;
+    color: var(--text-muted);
+}
+
+.stat-value {
+    font-size: .75rem;
+    text-align: right;
+}
+
+.stat-bar {
+    height: 8px;
+    background-color: var(--shadow);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    background-color: var(--accent);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+/* ===== Responsivo ===== */
+@media screen and (min-width: 380px) {
+    .pokemons { grid-template-columns: 1fr 1fr; }
+}
+
+@media screen and (min-width: 576px) {
+    .pokemons { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+@media screen and (min-width: 992px) {
+    .pokemons { grid-template-columns: 1fr 1fr 1fr 1fr; }
+}
